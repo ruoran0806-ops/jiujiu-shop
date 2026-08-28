@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>玖玖生活研究所 | 认真了解自己，也认真爱自己</title>
+<meta name="description" content="玖玖生活研究所 - 精选治愈系好物，夜间陪伴、洗沐护理、香氛舒缓。认真了解自己，也认真爱自己。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-main:#FAF6F2;--bg-card:#FFFFFF;--bg-warm:#FFF8FA;--bg-soft:#F5EDE8;
+  --brand:#C4836E;--accent:#C44962;--pink:#D4A5A5;--pink-deep:#B08584;
+  --rose:#E8C4C4;--pink-light:#F5E0E0;--text:#4A4A4A;--text-light:#9B9B9B;
+  --border:#EDE0E0;--shadow-sm:0 2px 8px rgba(180,120,110,.08);
+  --shadow-md:0 4px 20px rgba(180,120,110,.12);--shadow-lg:0 12px 40px rgba(180,120,110,.18);
+  --r-sm:8px;--r-md:16px;--r-lg:24px;--trs:all .3s ease;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans SC',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg-main);color:var(--text);line-height:1.6;overflow-x:hidden}
+
+/* ===== Header ===== */
+.header{position:sticky;top:0;z-index:100;background:rgba(255,248,250,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.header-inner{max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand-block{display:flex;flex-direction:column}
+.brand-name{font-family:'Noto Serif SC',serif;font-size:22px;font-weight:600;color:var(--brand);letter-spacing:2px;line-height:1.2}
+.brand-tag{font-size:11px;color:var(--text-light);letter-spacing:2px;margin-top:2px}
+.cat-nav{display:flex;gap:6px;flex-wrap:wrap}
+.cat-nav button{padding:7px 18px;border:none;background:transparent;color:var(--text-light);font-size:14px;cursor:pointer;border-radius:20px;transition:var(--trs);font-family:inherit}
+.cat-nav button:hover{color:var(--brand);background:var(--pink-light)}
+.cat-nav button.active{background:var(--brand);color:#fff}
+
+/* ===== Hero ===== */
+.hero{text-align:center;padding:72px 24px 48px;background:linear-gradient(180deg,var(--bg-warm) 0%,var(--bg-main) 100%);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;left:-10%;width:60%;height:200%;background:radial-gradient(ellipse,rgba(212,165,165,.15) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-50%;right:-10%;width:60%;height:200%;background:radial-gradient(ellipse,rgba(196,131,110,.1) 0%,transparent 70%);pointer-events:none}
+.hero-inner{position:relative;z-index:1}
+.hero h2{font-family:'Noto Serif SC',serif;font-size:38px;font-weight:500;color:var(--brand);line-height:1.5;margin-bottom:14px}
+.hero h2 .accent{color:var(--accent)}
+.hero p{font-size:15px;color:var(--text-light);letter-spacing:2px}
+.hero-deco{width:40px;height:2px;background:linear-gradient(90deg,transparent,var(--brand),transparent);margin:20px auto 0}
+
+/* ===== Products ===== */
+.products-section{max-width:1200px;margin:0 auto;padding:40px 24px 80px}
+.section-head{text-align:center;margin-bottom:32px}
+.section-head h3{font-family:'Noto Serif SC',serif;font-size:22px;font-weight:500;color:var(--text)}
+.section-head p{font-size:13px;color:var(--text-light);margin-top:6px;letter-spacing:1px}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
+
+/* Product Card */
+.p-card{background:var(--bg-card);border-radius:var(--r-md);overflow:hidden;cursor:pointer;transition:var(--trs);box-shadow:var(--shadow-sm);animation:fadeUp .5s ease forwards;opacity:0}
+.p-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.p-card-img{width:100%;aspect-ratio:4/5;overflow:hidden;position:relative;background:var(--bg-soft)}
+.p-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.p-card:hover .p-card-img img{transform:scale(1.06)}
+.p-card-img .ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:20px;color:rgba(255,255,255,.92);text-align:center;padding:20px;font-weight:500}
+.p-card-info{padding:16px}
+.p-card-cat{display:inline-block;font-size:11px;color:var(--brand);background:var(--pink-light);padding:2px 10px;border-radius:10px;margin-bottom:8px}
+.p-card-name{font-family:'Noto Serif SC',serif;font-size:17px;font-weight:500;color:var(--text);margin-bottom:6px}
+.p-card-price{font-size:18px;color:var(--accent);font-weight:600}
+.p-card-price::before{content:'\00a5';font-size:13px;margin-right:1px}
+
+/* ===== Product Detail Modal ===== */
+.overlay{position:fixed;inset:0;background:rgba(60,50,50,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px;opacity:0;transition:opacity .3s ease}
+.overlay.active{display:flex;opacity:1}
+.modal{background:var(--bg-card);border-radius:var(--r-lg);max-width:900px;width:100%;max-height:92vh;overflow-y:auto;position:relative;transform:scale(.92);transition:transform .3s ease}
+.overlay.active .modal{transform:scale(1)}
+.modal-close{position:absolute;top:14px;right:14px;width:36px;height:36px;border:none;background:var(--bg-soft);border-radius:50%;font-size:20px;cursor:pointer;color:var(--text-light);z-index:10;transition:var(--trs);display:flex;align-items:center;justify-content:center;line-height:1}
+.modal-close:hover{background:var(--pink-light);color:var(--brand)}
+.modal-body{display:grid;grid-template-columns:1fr 1fr;gap:0}
+
+/* Gallery */
+.gallery{padding:28px}
+.gallery-main{width:100%;aspect-ratio:1;border-radius:var(--r-md);overflow:hidden;background:var(--bg-soft);margin-bottom:12px;position:relative}
+.gallery-main img{width:100%;height:100%;object-fit:cover}
+.gallery-main .ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:26px;color:rgba(255,255,255,.92);font-weight:500}
+.gallery-nav{position:absolute;top:50%;width:100%;display:flex;justify-content:space-between;transform:translateY(-50%);pointer-events:none}
+.gallery-nav button{width:36px;height:36px;border:none;background:rgba(255,255,255,.8);border-radius:50%;font-size:18px;cursor:pointer;color:var(--brand);pointer-events:auto;transition:var(--trs);display:flex;align-items:center;justify-content:center;margin:0 8px}
+.gallery-nav button:hover{background:#fff;box-shadow:var(--shadow-sm)}
+.gallery-nav .hidden{visibility:hidden}
+.gallery-thumbs{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
+.gallery-thumbs::-webkit-scrollbar{height:4px}
+.gallery-thumbs::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.thumb{width:60px;height:60px;border-radius:var(--r-sm);overflow:hidden;cursor:pointer;border:2px solid transparent;flex-shrink:0;transition:var(--trs)}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.thumb.active{border-color:var(--brand)}
+
+/* Product Info */
+.p-info{padding:32px 28px 28px;display:flex;flex-direction:column}
+.p-info .cat-tag{display:inline-block;align-self:flex-start;font-size:12px;color:var(--brand);background:var(--pink-light);padding:4px 12px;border-radius:12px;margin-bottom:12px}
+.p-info h2{font-family:'Noto Serif SC',serif;font-size:26px;font-weight:600;color:var(--text);margin-bottom:14px}
+.p-info .price{font-size:30px;color:var(--accent);font-weight:700;margin-bottom:22px}
+.p-info .price::before{content:'\00a5';font-size:18px;margin-right:3px}
+.p-info .desc{font-size:15px;color:var(--text);line-height:1.85;margin-bottom:24px;flex:1;position:relative;padding:16px 20px;background:var(--bg-warm);border-radius:var(--r-md);border-left:3px solid var(--rose)}
+.p-info .desc::before{content:'\201C';font-family:'Noto Serif SC',serif;font-size:32px;color:var(--rose);position:absolute;top:4px;left:8px;line-height:1}
+.p-info .stock-info{font-size:13px;color:var(--text-light);margin-bottom:20px}
+.p-info .stock-info .in-stock{color:#7BBE8E}
+.btn-consult{width:100%;padding:15px;border:none;background:linear-gradient(135deg,var(--brand),var(--accent));color:#fff;font-size:15px;font-weight:500;border-radius:var(--r-md);cursor:pointer;transition:var(--trs);font-family:inherit;letter-spacing:2px}
+.btn-consult:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(196,73,98,.3)}
+
+/* ===== Customer Service Modal ===== */
+.cs-modal{max-width:360px;text-align:center;padding:40px 32px 32px}
+.cs-modal h3{font-family:'Noto Serif SC',serif;font-size:20px;color:var(--brand);margin-bottom:6px}
+.cs-modal .sub{font-size:13px;color:var(--text-light);margin-bottom:24px}
+.cs-qr{width:200px;height:200px;margin:0 auto 24px;border-radius:var(--r-md);overflow:hidden;background:var(--bg-soft);display:flex;align-items:center;justify-content:center;border:1px solid var(--border)}
+.cs-qr img{width:100%;height:100%;object-fit:cover}
+.cs-qr .ph{color:var(--text-light);font-size:13px;text-align:center;padding:20px}
+.cs-wechat{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:12px}
+.cs-wechat .lbl{font-size:14px;color:var(--text-light)}
+.cs-wechat .wid{font-size:16px;color:var(--text);font-weight:500}
+.btn-copy{padding:4px 12px;border:1px solid var(--border);background:var(--bg-card);color:var(--brand);font-size:12px;border-radius:12px;cursor:pointer;transition:var(--trs);font-family:inherit}
+.btn-copy:hover{background:var(--pink-light)}
+.cs-hint{font-size:12px;color:var(--text-light);margin-top:12px;line-height:1.6}
+
+/* ===== Footer ===== */
+.footer{text-align:center;padding:32px 24px;border-top:1px solid var(--border);background:var(--bg-warm)}
+.footer p{font-size:13px;color:var(--text-light);margin-bottom:6px}
+.footer .tag{font-size:12px;color:var(--pink-deep);margin-bottom:8px}
+.footer .admin-link{font-size:12px;color:var(--text-light);text-decoration:none;opacity:.5;transition:var(--trs)}
+.footer .admin-link:hover{opacity:1;color:var(--brand)}
+
+/* ===== Empty State ===== */
+.empty{text-align:center;padding:80px 24px;color:var(--text-light)}
+.empty .ic{font-size:48px;margin-bottom:16px;opacity:.3}
+.empty p{font-size:15px}
+
+/* ===== Animations ===== */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* ===== Responsive ===== */
+@media(max-width:768px){
+  .header-inner{flex-direction:column;gap:10px;padding:12px 16px}
+  .hero{padding:48px 20px 32px}
+  .hero h2{font-size:28px}
+  .modal-body{grid-template-columns:1fr}
+  .gallery{padding:16px}
+  .p-info{padding:16px 20px}
+  .p-info h2{font-size:22px}
+  .p-info .price{font-size:26px}
+  .products-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+  .p-card-info{padding:12px 10px}
+  .p-card-name{font-size:15px}
+  .p-card-price{font-size:16px}
+}
+@media(max-width:480px){
+  .products-grid{grid-template-columns:1fr}
+  .hero h2{font-size:24px}
+  .cat-nav button{padding:6px 14px;font-size:13px}
+  .cs-modal{padding:32px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header class="header">
+  <div class="header-inner">
+    <div class="brand-block">
+      <div class="brand-name">玖玖生活研究所</div>
+      <div class="brand-tag">认真了解自己，也认真爱自己</div>
+    </div>
+    <nav class="cat-nav">
+      <button data-cat="all" class="active">全部</button>
+      <button data-cat="夜间陪伴">夜间陪伴</button>
+      <button data-cat="洗沐护理">洗沐护理</button>
+      <button data-cat="香氛舒缓">香氛舒缓</button>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== Hero ===== -->
+<section class="hero">
+  <div class="hero-inner">
+    <h2>认真了解自己<br><span class="accent">也认真爱自己</span></h2>
+    <p>每一件好物，都是对自己的温柔告白</p>
+    <div class="hero-deco"></div>
+  </div>
+</section>
+
+<!-- ===== Products ===== -->
+<section class="products-section">
+  <div class="section-head">
+    <h3>精选好物</h3>
+    <p>用心挑选，只为温柔的你</p>
+  </div>
+  <div class="products-grid" id="grid"></div>
+  <div class="empty" id="empty" style="display:none">
+    <div class="ic">&#10024;</div>
+    <p>暂无商品，敬请期待</p>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <p>&copy; 2024 玖玖生活研究所</p>
+  <p class="tag">认真了解自己，也认真爱自己</p>
+  <a href="admin.html" class="admin-link">管理后台</a>
+</footer>
+
+<!-- ===== Product Detail Modal ===== -->
+<div class="overlay" id="pModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closePModal()">&times;</button>
+    <div class="modal-body">
+      <div class="gallery">
+        <div class="gallery-main" id="gMain">
+          <div class="gallery-nav">
+            <button onclick="changeImg(-1)" id="prevBtn">&#8249;</button>
+            <button onclick="changeImg(1)" id="nextBtn">&#8250;</button>
+          </div>
+        </div>
+        <div class="gallery-thumbs" id="gThumbs"></div>
+      </div>
+      <div class="p-info">
+        <span class="cat-tag" id="dCat"></span>
+        <h2 id="dName"></h2>
+        <p class="price" id="dPrice"></p>
+        <div class="desc" id="dDesc"></div>
+        <p class="stock-info" id="dStock"></p>
+        <button class="btn-consult" onclick="openCS()">咨询价格 / 联系客服</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Customer Service Modal ===== -->
+<div class="overlay" id="csModal">
+  <div class="modal cs-modal">
+    <button class="modal-close" onclick="closeCS()">&times;</button>
+    <h3>联系客服</h3>
+    <p class="sub">扫码添加微信，了解更多详情</p>
+    <div class="cs-qr" id="csQR"></div>
+    <div class="cs-wechat">
+      <span class="lbl">微信号：</span>
+      <span class="wid" id="csWx"></span>
+      <button class="btn-copy" onclick="copyWx()">复制</button>
+    </div>
+    <p class="cs-hint">客服在线时间 9:00-21:00<br>添加时请备注"玖玖生活"</p>
+  </div>
+</div>
+
+<script>
+/* ===== Sample Data ===== */
+var SP=[
+  {id:'p001',name:'月光伴眠枕',images:[],price:'198',stock:50,status:'published',category:'夜间陪伴',description:'柔软如月光般的触感，让每一个夜晚都充满温柔。认真对待自己的睡眠，是对自己最好的温柔。'},
+  {id:'p002',name:'真丝助眠眼罩',images:[],price:'89',stock:100,status:'published',category:'夜间陪伴',description:'真丝的温柔，遮住世界的喧嚣。闭上眼，世界只剩你与自己。'},
+  {id:'p003',name:'玫瑰花瓣沐浴露',images:[],price:'128',stock:80,status:'published',category:'洗沐护理',description:'玫瑰的芬芳，洗去一天的疲惫。每一次沐浴，都是与自己对话的时刻。'},
+  {id:'p004',name:'山茶花滋润护手霜',images:[],price:'68',stock:200,status:'published',category:'洗沐护理',description:'山茶花的滋润，温柔呵护每一寸肌肤。你的双手，值得最好的照顾。'},
+  {id:'p005',name:'薰衣草安神喷雾',images:[],price:'158',stock:60,status:'published',category:'香氛舒缓',description:'薰衣草的安神力量，让身心回归平静。深呼吸，感受此刻的宁静。'},
+  {id:'p006',name:'白茶淡香薰薰机',images:[],price:'298',stock:30,status:'published',category:'香氛舒缓',description:'白茶的清雅，弥漫在整个房间。生活的仪式感，从一缕香气开始。'}
+];
+var SS={customer_service_qr:'',contact_wechat:'jiujiu_service'};
+
+/* ===== Store ===== */
+var Store={
+  getProducts:function(){try{return JSON.parse(localStorage.getItem('jj_products')||'[]')}catch(e){return[]}},
+  getSettings:function(){try{return JSON.parse(localStorage.getItem('jj_settings')||'{}')}catch(e){return{}}},
+  init:function(){
+    if(!localStorage.getItem('jj_init')){
+      localStorage.setItem('jj_products',JSON.stringify(SP));
+      localStorage.setItem('jj_settings',JSON.stringify(SS));
+      localStorage.setItem('jj_init','1');
+    }
+  }
+};
+
+/* ===== State ===== */
+var curCat='all',curProduct=null,curImgIdx=0;
+
+/* ===== Helpers ===== */
+function grad(cat){
+  var g={
+    '夜间陪伴':'linear-gradient(135deg,#5D4E75,#3D3454)',
+    '洗沐护理':'linear-gradient(135deg,#D4A5A5,#B08584)',
+    '香氛舒缓':'linear-gradient(135deg,#C4836E,#D4A574)'
+  };
+  return g[cat]||g['香氛舒缓'];
+}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+
+/* ===== Render Products ===== */
+function renderProducts(){
+  var grid=document.getElementById('grid');
+  var empty=document.getElementById('empty');
+  var ps=Store.getProducts().filter(function(p){return p.status==='published'});
+  if(curCat!=='all')ps=ps.filter(function(p){return p.category===curCat});
+  if(ps.length===0){grid.style.display='none';empty.style.display='block';return}
+  grid.style.display='grid';empty.style.display='none';
+  grid.innerHTML=ps.map(function(p,i){
+    var hasImg=p.images&&p.images.length>0;
+    var imgHTML=hasImg?'<img src="'+esc(p.images[0])+'" alt="'+esc(p.name)+'" loading="lazy">'
+      :'<div class="ph" style="background:'+grad(p.category)+'">'+esc(p.name)+'</div>';
+    return '<div class="p-card" style="animation-delay:'+(i*0.08)+'s" onclick="openP(\''+p.id+'\')">'
+      +'<div class="p-card-img">'+imgHTML+'</div>'
+      +'<div class="p-card-info"><span class="p-card-cat">'+esc(p.category)+'</span>'
+      +'<div class="p-card-name">'+esc(p.name)+'</div>'
+      +'<div class="p-card-price">'+esc(p.price)+'</div></div></div>';
+  }).join('');
+}
+
+/* ===== Product Detail ===== */
+function openP(id){
+  var ps=Store.getProducts();
+  for(var i=0;i<ps.length;i++){if(ps[i].id===id){curProduct=ps[i];break}}
+  if(!curProduct)return;
+  curImgIdx=0;
+  document.getElementById('dCat').textContent=curProduct.category;
+  document.getElementById('dName').textContent=curProduct.name;
+  document.getElementById('dPrice').textContent=curProduct.price;
+  document.getElementById('dDesc').textContent=curProduct.description;
+  var stockEl=document.getElementById('dStock');
+  if(curProduct.stock>0){
+    stockEl.innerHTML='<span class="in-stock">有货</span> | 库存 '+curProduct.stock+' 件';
+  }else{
+    stockEl.innerHTML='暂时缺货';
+  }
+  renderGallery();
+  document.getElementById('pModal').classList.add('active');
+  document.body.style.overflow='hidden';
+}
+function renderGallery(){
+  var main=document.getElementById('gMain');
+  var thumbs=document.getElementById('gThumbs');
+  var prevBtn=document.getElementById('prevBtn');
+  var nextBtn=document.getElementById('nextBtn');
+  if(!curProduct.images||curProduct.images.length===0){
+    main.innerHTML='<div class="gallery-nav"><button onclick="changeImg(-1)" id="prevBtn" class="hidden">&#8249;</button><button onclick="changeImg(1)" id="nextBtn" class="hidden">&#8250;</button></div><div class="ph" style="background:'+grad(curProduct.category)+';width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:Noto Serif SC,serif;font-size:26px;color:rgba(255,255,255,.92);font-weight:500">'+esc(curProduct.name)+'</div>';
+    thumbs.innerHTML='';
+    return;
+  }
+  var imgs=curProduct.images;
+  main.innerHTML='<div class="gallery-nav"><button onclick="changeImg(-1)" id="prevBtn" '+(curImgIdx===0?'class="hidden"':'')+'>&#8249;</button><button onclick="changeImg(1)" id="nextBtn" '+(curImgIdx===imgs.length-1?'class="hidden"':'')+'>&#8250;</button></div><img src="'+esc(imgs[curImgIdx])+'" alt="'+esc(curProduct.name)+'">';
+  if(imgs.length>1){
+    thumbs.innerHTML=imgs.map(function(img,i){
+      return '<div class="thumb'+(i===curImgIdx?' active':'')+'" onclick="setImg('+i+')"><img src="'+esc(img)+'" alt=""></div>';
+    }).join('');
+  }else{
+    thumbs.innerHTML='';
+  }
+}
+function changeImg(dir){
+  if(!curProduct.images||curProduct.images.length===0)return;
+  var len=curProduct.images.length;
+  curImgIdx=(curImgIdx+dir+len)%len;
+  renderGallery();
+}
+function setImg(idx){curImgIdx=idx;renderGallery()}
+function closePModal(){
+  document.getElementById('pModal').classList.remove('active');
+  document.body.style.overflow='';
+}
+
+/* ===== Customer Service ===== */
+function openCS(){
+  var s=Store.getSettings();
+  var qr=document.getElementById('csQR');
+  if(s.customer_service_qr){
+    qr.innerHTML='<img src="'+esc(s.customer_service_qr)+'" alt="客服二维码">';
+  }else{
+    qr.innerHTML='<div class="ph">请前往后台<br>配置客服二维码</div>';
+  }
+  document.getElementById('csWx').textContent=s.contact_wechat||'未配置';
+  document.getElementById('csModal').classList.add('active');
+}
+function closeCS(){document.getElementById('csModal').classList.remove('active')}
+function copyWx(){
+  var t=document.getElementById('csWx').textContent;
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(t).then(function(){alert('已复制微信号：'+t)}).catch(function(){fallbackCopy(t)});
+  }else{fallbackCopy(t)}
+}
+function fallbackCopy(t){
+  var ta=document.createElement('textarea');
+  ta.value=t;ta.style.position='fixed';ta.style.opacity='0';
+  document.body.appendChild(ta);ta.select();
+  try{document.execCommand('copy');alert('已复制微信号：'+t)}catch(e){alert('请手动复制：'+t)}
+  document.body.removeChild(ta);
+}
+
+/* ===== Events ===== */
+document.querySelectorAll('.cat-nav button').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('.cat-nav button').forEach(function(b){b.classList.remove('active')});
+    btn.classList.add('active');
+    curCat=btn.dataset.cat;
+    renderProducts();
+  });
+});
+document.getElementById('pModal').addEventListener('click',function(e){if(e.target.id==='pModal')closePModal()});
+document.getElementById('csModal').addEventListener('click',function(e){if(e.target.id==='csModal')closeCS()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closePModal();closeCS()}});
+
+/* ===== Init ===== */
+Store.init();
+renderProducts();
+</script>
+</body>
+</html>

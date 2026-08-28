@@ -118,6 +118,10 @@ tr:hover{background:var(--bg-warm)}
 .img-preview .rm{position:absolute;top:2px;right:2px;width:20px;height:20px;border:none;background:rgba(0,0,0,.5);color:#fff;border-radius:50%;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1}
 .img-preview .rm:hover{background:rgba(224,112,112,.9)}
 .img-preview .order{position:absolute;bottom:2px;left:2px;background:rgba(196,131,110,.85);color:#fff;font-size:10px;padding:1px 5px;border-radius:4px}
+.img-preview .sort-btns{position:absolute;top:2px;left:2px;display:flex;gap:2px}
+.img-preview .sort-btns button{width:18px;height:18px;border:none;background:rgba(0,0,0,.5);color:#fff;border-radius:50%;font-size:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;padding:0}
+.img-preview .sort-btns button:hover{background:rgba(196,131,110,.9)}
+.img-preview .sort-btns button:disabled{opacity:.3;cursor:default}
 
 /* ===== Settings ===== */
 .settings-card{background:var(--bg-card);border-radius:var(--r-md);padding:32px;box-shadow:var(--shadow-sm);max-width:500px}
@@ -199,7 +203,7 @@ tr:hover{background:var(--bg-warm)}
         <h2 id="formTitle">发布新商品</h2>
         <input type="hidden" id="editId">
         <div class="form-group">
-          <label>商品图片 <span style="font-size:12px;color:var(--text-light)">（最多10张，首张为主图）</span></label>
+          <label>商品图片 <span style="font-size:12px;color:var(--text-light)">（最多10张，首张为主图，可拖拽排序）</span></label>
           <div class="drop-zone" id="dropZone">
             <div class="ic">&#128247;</div>
             <p>拖拽图片到此处，或 <span>点击上传</span></p>
@@ -400,7 +404,8 @@ function toggleStatus(id){
   }
   Store.saveProducts(ps);
   renderTable();
-  showToast(ps[i-1>=0?i-1:i]&&ps.find(function(p){return p.id===id})?.status==='published'?'已上架':'已下架');
+  var p=ps.find(function(p){return p.id===id});
+  showToast(p&&p.status==='published'?'已上架':'已下架');
 }
 
 /* ===== Product Form ===== */
@@ -517,10 +522,22 @@ function renderImgPreviews(){
   c.innerHTML=uploadedImages.map(function(img,i){
     return '<div class="img-preview">'
       +'<img src="'+img+'" alt="预览'+(i+1)+'">'
+      +'<div class="sort-btns">'
+      +'<button onclick="moveImg('+i+',-1)" '+(i===0?'disabled':'')+' title="左移">&#8249;</button>'
+      +'<button onclick="moveImg('+i+',1)" '+(i===uploadedImages.length-1?'disabled':'')+' title="右移">&#8250;</button>'
+      +'</div>'
       +'<span class="order">'+(i+1)+'</span>'
       +'<button class="rm" onclick="removeImg('+i+')">&times;</button>'
       +'</div>';
   }).join('');
+}
+function moveImg(idx,dir){
+  var target=idx+dir;
+  if(target<0||target>=uploadedImages.length)return;
+  var tmp=uploadedImages[idx];
+  uploadedImages[idx]=uploadedImages[target];
+  uploadedImages[target]=tmp;
+  renderImgPreviews();
 }
 function removeImg(idx){
   uploadedImages.splice(idx,1);
